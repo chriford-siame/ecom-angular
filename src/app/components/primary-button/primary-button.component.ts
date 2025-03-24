@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-primary-button',
   imports: [],
   template: `
-    <p>
-      primary-button works!
-    </p>
+    <button (click)="handleButtonClick()">
+      {{ label() }}
+    </button>
   `,
   styles: ``
 })
 export class PrimaryButtonComponent {
+  label = input('');
 
+  btnClicked = output();
+
+  handleButtonClick() {
+    this.btnClicked.emit();
+    console.log("Button clicked!!")
+  }
 }
