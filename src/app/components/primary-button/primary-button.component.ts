@@ -13,10 +13,9 @@ import { Component, input, output } from '@angular/core';
 export class PrimaryButtonComponent {
   label = input('');
 
-  btnClicked = output();
+  action = output();
 
   handleButtonClick() {
-    this.btnClicked.emit();
-    console.log("Button clicked!!")
+    this.action.emit();
   }
 }
