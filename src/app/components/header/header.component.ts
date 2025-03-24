@@ -9,7 +9,7 @@ import { CartService } from '../../services/cart.service';
     <div class="bg-slate-100 px-4 py-5 shadow-md flex justify-between items-center">
       <span>My Store</span>
       <div>
-        <app-primary-button [label]="'Cart (' + cartService.cart().length + ')'" (action)="cartItemViewer()" />
+        <app-primary-button [label]="'Cart (' + cartService.cart().length + ')'" />
       </div>
     </div>
     `,
@@ -17,8 +17,5 @@ import { CartService } from '../../services/cart.service';
 })
 export class HeaderComponent {
   cartService = inject(CartService);
-  cartItemViewer() {
-
-  }
 
 }
