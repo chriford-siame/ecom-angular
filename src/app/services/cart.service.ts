@@ -1,15 +1,20 @@
 import { Injectable, signal } from '@angular/core';
 import { Product } from '../models/products.model';
+import { CART } from '../fixture/cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  cart = signal<Product[]>([]);
+  cartItems = signal<Product[]>(CART);
 
   addToCart(product: Product) {
-    this.cart.set([...this.cart(), product])
+    this.cartItems.set([...this.cartItems(), product])
+  }
+
+  removeItem(id: number) {
+    this.cartItems.set(this.cartItems().filter((p) => p.id !== id));
   }
 
   constructor() { }
