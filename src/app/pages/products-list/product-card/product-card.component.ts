@@ -27,5 +27,8 @@ import { PrimaryButtonComponent } from "../../../components/primary-button/prima
   styles: ``
 })
 export class ProductCardComponent {
+
+  cartService = inject(CartService);
+
   product = input.required<Product>();
 }
