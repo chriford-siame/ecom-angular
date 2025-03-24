@@ -6,10 +6,10 @@ import { Product } from '../models/products.model';
 })
 export class CartService {
 
-  cart = signal<Product[]>([]);
+  cartItems = signal<Product[]>([]);
 
   addToCart(product: Product) {
-    this.cart.set([...this.cart(), product])
+    this.cartItems.set([...this.cartItems(), product])
   }
 
   constructor() { }
