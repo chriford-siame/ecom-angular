@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { Product } from '../../models/products.model';
+import { Component, inject } from '@angular/core';
 import { CartItemComponent } from "./cart-item/cart-item.component";
-import { CART } from '../../fixture/cart';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +8,7 @@ import { CART } from '../../fixture/cart';
   template: `
     <div class="p-8 flex flex-col gap-4">
       <p class="text-2xl font-bold">Shopping Cart</p>
-      @for (item of cartItems(); track item.id) {
+      @for (item of cartService.cartItems(); track item.id) {
         <app-cart-item [item]="item" />
       }
     </div>
@@ -17,5 +16,5 @@ import { CART } from '../../fixture/cart';
   styles: ``
 })
 export class CartComponent {
-  cartItems = signal<Product[]>(CART);
+  cartService = inject(CartService);
 }
