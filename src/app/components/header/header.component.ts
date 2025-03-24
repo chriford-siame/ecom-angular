@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PrimaryButtonComponent } from '../primary-button/primary-button.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,13 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
     <div class="bg-slate-100 px-4 py-5 shadow-md flex justify-between items-center">
       <span>My Store</span>
       <div>
-        <app-primary-button label="Cart" (action)="cartItemViewer()" />
+        <app-primary-button [label]="'Cart (' + cartService.cart().length + ')'" />
       </div>
     </div>
     `,
   styles: ``
 })
 export class HeaderComponent {
-  cartItemViewer() {
-    console.log("my cart!")
-  }
+  cartService = inject(CartService);
 
 }
